@@ -3,150 +3,124 @@
 #include <stdlib.h>
 #define CAPACITY 5
 
-
 int stack[CAPACITY];
-int top = -1, ele;
+int top = -1,ele;
 
-int push(int);
-int pop(void);
-int peek(void);
-int traverse(void);
-int isEmpty(void);
-int isFull(void);
+void push();
+void pop();
+void display();
+void peek();
+int isFull();
+int isEmpty();
+void main()
 
-int main()
 {
-    int ch,item,i;
-    while(1)
+    int ch;
+    while (1)
     {
-    printf("Enter your Choice:\n");
-    printf("1.Push\n");
-    printf("2.Pop\n");
-    printf("3.Peek\n");
-    printf("4.Traverse\n");
-    printf("5.Quit\n");
-    scanf("%d", &ch);
-
-        switch(ch)
-    {
-    case 1:
-        printf("Enter your elements:\n");
-        scanf("%d", &ele);
-        push(ele);
-        break;
-    case 2:
-        item = pop();
-        if (item == '0')
-            printf("Stack is Empty\n");
-        else
-            printf("%d Element popped successfully\n", item);
-        break;
-    case 3:
-        item = peek();
-        if (item == '0')
-            printf("Stack is Empty\n");
-        else
-            printf("%d is Peek Element\n", item);
-        break;
-    case 4:
-        item = traverse();
-        if (item == '0')
-            printf("Stack is Empty\n");
-        else
+        printf("1.Push Elements\n");
+        printf("2.Pop Elements.\n");
+        printf("3.Display Elements of Stack\n");
+        printf("4.Peek Elements\n");
+        printf("5.Exit.\n");
+        printf("Enter your choice:");
+        scanf("%d", &ch);
+        switch (ch)
         {
-         for(i = 0; i <= top; i++)
-         {
-             printf("%d\n",stack[i]);
-         }
+        case 1: push();
+            break;
+        
+        case 2: pop();
+            break;
+
+        case 3: display();
+            break;
+
+        case 4: peek();
+            break;
+
+        case 5: exit(0);
+            break;
+
+        default: printf("Invalid Choice\n");
+            break;
         }
-
-        break;
-    case 5:
-        exit(0);
-        break;
-
-    default:
-        printf("You have entered wrong choice\n");
-        break;
     }
-    }
+    
 }
 
-
-int push(int ele)
+void push()
+{
+    if(isFull())
     {
-        if(isFull())
-        {
-            printf("Stack is full\n");
-        }
-        else
-        {
-            top++;
-            printf("%d Element is inserted successfully\n",ele);
-            return stack[top] = ele;
-        }
+        printf("Stack is Full\n\n");
     }
-
-
-int pop()
+    else
     {
-        if(isEmpty())
-        {
-            return '0';
-        }
-        else
-        {
-            return stack[top--];
-        }
-
+        printf("Enter your elements to push:");
+        scanf("%d", &ele);
+        top++;
+        stack[top] = ele;
     }
-
-int peek()
+}
+void pop()
+{
+    if(isEmpty())
     {
-        if(isEmpty())
-        {
-            return '0';
-        }
-        else
-        {
-            return stack[top];
-        }
+        printf("Stack is Empty\n\n");
     }
-
-int traverse()
+    else
     {
-        if(isEmpty())
-        {
-            return '0';
-        }
-        else
-        {
-            return 1;
-        }
+        printf("Poped elements is %d\n\n",stack[top]);
+        top--;
     }
-
-int isFull()
+}
+void display()
+{
+    int i;
+    if(isEmpty())
     {
-        if(top == CAPACITY - 1)
-        {
-            return 1;
-        }
-
-        else
-        {
-            return 0;
-        }
+        printf("Stack is Empty\n\n");
     }
-
+    else
+    {
+        for(i = 0; i <= top; i++)
+    {
+        printf("->%d", stack[i]);
+    }
+    printf("\n\n");
+    }
+}
+void peek()
+{
+if (isEmpty())
+    {
+        printf("None\n\n");
+    }
+else
+    {
+        printf("peek element is %d\n\n", stack[top]);
+    }
+}
 int isEmpty()
+{
+    if (top == -1)
     {
-
-        if(top == -1)
-        {
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
+        return 1;
     }
+    else
+    {
+        return 0;
+    }
+}
+int isFull()
+{
+    if (top == CAPACITY -1)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }  
+}
