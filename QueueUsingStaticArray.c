@@ -18,7 +18,7 @@ int isEmpty();
          printf("1.Enqueue Elements\n");
          printf("2.Dequeue Elements\n");
          printf("3.Display Elements\n");
-         printf("5.Quit\n");
+         printf("4.Quit\n");
          printf("Enter the operation you want to Perform:");
          scanf("%d", &ch);
 
