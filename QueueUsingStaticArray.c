@@ -1,85 +1,110 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define CAPACITY 5
-
-
-int front, rear = 0;
 int queue[CAPACITY];
-void push();
-void pop();
-void traverse();
-void main()
+int ele;
+int front = 0;
+int rear = 0;
+void enqueue();
+void dequeue();
+void display();
+int isFull();
+int isEmpty();
+ void main()
 {
-    int ch;
-    while(1)
-    {
-        printf("1. Push\n");
-        printf("2. Pop\n");
-        printf("3. Traverse\n");
-        printf("4. Quit\n");
-        printf("Enter your choice:");
-        scanf("%d", &ch);
+     int ch;
+     while(1)
+     {
+         printf("1.Enqueue Elements\n");
+         printf("2.Dequeue Elements\n");
+         printf("3.Display Elements\n");
+         printf("5.Quit\n");
+         printf("Enter the operation you want to Perform:");
+         scanf("%d", &ch);
 
-        switch(ch)
-        {
-            case 1: push();
+
+         switch(ch)
+         {
+             case 1: enqueue();
                     break;
-            case 2: pop();
+            case 2: dequeue();
                     break;
-            case 3: traverse();
+            case 3: display();
                     break;
             case 4: exit(0);
-        }
+                    break;
+            default: printf("Invalid Choice:");
+                    break;
+         }
+     }
+ }
 
-    }
-}
-
-void push()
+void enqueue()
 {
-    int data;
-    if(CAPACITY == rear)
+    if(isFull())
     {
-        printf("Queue is Full\n");
+        printf("Queue is full\n\n");
     }
     else
     {
-        printf("Enter Your data:");
-        scanf("%d", &data);
-        queue[rear] = data;
+        printf("Enter your element to enqueue:");
+        scanf("%d",&ele);
+        queue[rear] = ele;
         rear++;
     }
 }
-void pop()
+void dequeue()
 {
-    int i;
     if(front == rear)
     {
-        printf("Queue is Empty\n");
+        printf("Queue is Empty\n\n");
     }
     else
     {
-        printf("%d is popped successfully", queue[front]);
-        for(i = front; i< rear-1; i++)
+        int i;
+        printf("%d is popped successfully\n", queue[front]);
+        for (i = 0; i< rear; i++)
         {
-            queue[i] = queue[i+1];
+        queue[i] = queue[i + 1];
         }
         rear--;
-    }
-
+    } 
 }
-void traverse()
+void display()
 {
-    int i;
-    if(front == rear)
+    if(isEmpty())
     {
-        printf("Queue is Empty\n");
+        printf("Queue is Empty\n\n");
     }
     else
     {
-        printf("Elements are: ");
-        for(i = front; i< rear; i++)
-        printf("%d\n",queue[i]);
+        int i;
+        for(i = 0; i < rear; i++)
+        {
+            printf("%d->",queue[i]);
+        }
     }
-    printf("\n");
-
+    printf("\n\n");
+}
+int isFull()
+{
+    if(rear == CAPACITY)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+int isEmpty()
+{
+    if(front == rear)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
