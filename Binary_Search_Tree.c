@@ -28,20 +28,26 @@ void main()
         scanf("%d", &ch);
         switch (ch)
         {
-        case 1: append();
+        case 1:
+            append();
             break;
-        case 2: inorder(root);
-        printf("\n\n");
+        case 2:
+            inorder(root);
+            printf("\n\n");
             break;
-        case 3: preorder(root);
-        printf("\n\n");
+        case 3:
+            preorder(root);
+            printf("\n\n");
             break;
-        case 4: postorder(root);
-        printf("\n\n");
+        case 4:
+            postorder(root);
+            printf("\n\n");
             break;
-        case 5: free_node(root);
+        case 5:
+            free_node(root);
             break;
-        case 6: exit(0);
+        case 6:
+            exit(0);
             break;
 
         default:
@@ -95,24 +101,27 @@ void inorder(struct node *temp)
     printf("%d ->", temp->data);
     inorder(temp->right);
 }
-void preorder(struct node* temp)
+void preorder(struct node *temp)
 {
-    if(temp == NULL) return;
-    printf("%d ->", temp ->data);
-    preorder(temp ->left);
-    preorder(temp ->right);
+    if (temp == NULL)
+        return;
+    printf("%d ->", temp->data);
+    preorder(temp->left);
+    preorder(temp->right);
 }
-void postorder(struct node* temp)
+void postorder(struct node *temp)
 {
-    if (temp == NULL) return;
-    postorder(temp ->left);
-    postorder(temp ->right);
-    printf("%d ->",temp ->data);
+    if (temp == NULL)
+        return;
+    postorder(temp->left);
+    postorder(temp->right);
+    printf("%d ->", temp->data);
 }
-void free_node(struct node* p)
+void free_node(struct node *p)
 {
-    if( p == NULL) return;
-    free_node(p ->left);
-    free_node(p ->right);
+    if (p == NULL)
+        return;
+    free_node(p->left);
+    free_node(p->right);
     free(p);
 }
