@@ -23,7 +23,8 @@ void main()
         printf("1.Append\n");
         printf("2.Display\n");
         printf("3.Length\n");
-        printf("4.quit\n");
+        printf("4.Sorting Using Bubble Sort\n");
+        printf("5.quit\n");
         printf("Enter your choice:");
         scanf("%d", &ch);
         switch (ch)
