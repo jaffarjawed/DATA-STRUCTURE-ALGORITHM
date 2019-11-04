@@ -22,7 +22,7 @@ void main()
         printf("2.Display\n");
         printf("3.Length\n");
         printf("4.Sorting\n");
-        printf("4.quit\n");
+        printf("5.quit\n");
         printf("Enter your choice:");
         scanf("%d", &ch);
         switch (ch)
